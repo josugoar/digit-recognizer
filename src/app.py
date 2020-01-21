@@ -41,7 +41,7 @@ class Predict(Resource):
             idx += 1
             x, y, w, h = cv2.boundingRect(cnt)
             roi = thresh[y: y + h, x: x + w]
-            cv2.imwrite(f"data/{idx}.jpg", roi)
+            cv2.imwrite(f"/src/data/{idx}.jpg", roi)
             cv2.rectangle(thresh, pt1=(x, y), pt2=(x + w, y + h), color=127, thickness=3)
 
         # Draw bounding contour
