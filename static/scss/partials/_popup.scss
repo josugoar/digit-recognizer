@@ -1,0 +1,57 @@
+.popup-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0; left: 0;
+  bottom: 0; right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  align-items:center;
+  justify-content: center;
+
+  .popup {
+    width: 90%;
+    padding: 1.5em 0;
+    text-transform: uppercase;
+    border: 4px double rgba(255,255,255,.25);
+    border-width: 4px 0;
+    background: url(/static/assets/triangles.png) repeat-y;
+    background-clip: text;
+    animation: showHidePopup 40s linear infinite;
+
+    i {
+      position: inherit;
+      font-size: 7.5px;
+      color: white;
+
+      a {
+        font-size: 10px;
+        color: transparent;
+        text-decoration: none;
+      }
+    }
+
+    span {
+      font-size: 3.25em;
+      font-weight: bold;
+      color: transparent;
+      text-shadow: 0 0 60px rgba(255,255,255,.5);
+    }
+  }
+}
+
+.popup-button {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-size: 20px;
+  color: white;
+  transform: rotate(90deg);
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+@keyframes showHidePopup {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 75%; }
+  100% { background-position: 0% 50%; }
+}

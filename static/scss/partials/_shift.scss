@@ -1,0 +1,50 @@
+.shift-wrapper {
+  position: absolute;
+  width: 130px; height: 47px;
+  bottom: 20px;
+
+  a {
+    position: absolute;
+    top: 0; left: 0;
+    padding: 15px;
+    margin: 0 10px;
+    color: #211f20;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover, &:active {
+      color: black;
+
+      &:after {
+        height: 100%;
+        opacity: 0.75;
+        visibility: visible;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      height: 1px;
+      top: 0; left: 0;
+      bottom: 0; right: 0;
+      margin: auto;
+      color: transparent;
+      background: #ffb20a;
+      opacity: 0;
+      visibility: none;
+      content: "";
+      transition: all .5s;
+      z-index: -1;
+    }
+  }
+}
+
+@keyframes float {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -20%, 0);
+  }
+}

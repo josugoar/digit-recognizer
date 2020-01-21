@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="/static/scss/main.css" />
+</head>
+
+<body onload="setSize()" onresize="setSize()" ontouchstart="setPosition(event)" onmousedown="setPosition(event)">
+
+  <!--
+    Flowing web background
+   -->
+  <div class="wave-wrapper-outer">
+    <div class="wave-wrapper-inner bg-top">
+      <div class="wave wave-top" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+    </div>
+    <div class="wave-wrapper-inner bg-middle">
+      <div class="wave wave-middle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+    </div>
+    <div class="wave-wrapper-inner bg-bottom">
+      <div class="wave wave-bottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
+    </div>
+  </div>
+
+  <!--
+    Default message
+   -->
+  <strong>Start drawing!</strong>
+
+  <!--
+    Main canvas sketch
+   -->
+  <canvas id="canvas" ontouchstart="$('strong').fadeOut(500)" onmousedown="$('strong').fadeOut(500)" ontouchmove="draw(event)" onmousemove="draw(event)"></canvas>
+
+  <!--
+    Functional display buttons
+   -->
+  <div class="display-wrapper">
+    <button onclick="post()">
+      Predict
+      <div id="loading" class="loading-wrapper" hidden>
+        <h1 class="dot">Loading</h1>
+        <h1 class="dot one">.</h1>
+        <h1 class="dot two">.</h1>
+        <h1 class="dot three">.</h1>
+      </div>
+    </button>
+    <button onclick="setSize()">Clear</button>
+  </div>
+
+  <!--
+    Draw mode selector
+   -->
+  <div class="shift-wrapper">
+    <a id="brush">
+      Brush &ensp;<i class="fa fa-paint-brush"></i>
+    </a>
+    <a id="eraser" style="display: none;">
+      Eraser &nbsp;<i class="fa fa-eraser"></i>
+    </a>
+  </div>
+
+  <!--
+    Circular menu
+   -->
+  <div id="menu" class="menu-wrapper">
+    <a class="floating-btn" onclick="document.getElementById('menu').classList.toggle('active');">
+      <i class="fa fa-bars"></i>
+    </a>
+    <menu class="item-wrapper">
+      <a href="#" class="menu-item fa fa-database"></a>
+      <a href="#" class="menu-item fa fa-gears"></a>
+      <a href="#" class="menu-item fa fa-info"></a>
+    </menu>
+  </div>
+
+  <!--
+    Initial popup title
+   -->
+  <div id="popup" class="popup-wrapper">
+    <p class="popup">
+      <i>
+        Check me out on &nbsp;
+        <a href="https://github.com/JoshGoA" class="fa fa-github"></a><br>
+      </i>
+      <span>Digit Recognizer</span>
+    </p>
+  </div>
+  <i id="popup-button" class="fa fa-caret-up popup-button" onclick="pop()"></i>
+
+  <script src="/static/js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+@import "partials/wave";
+@import "partials/display";
+@import "partials/loading";
+@import "partials/shift";
+@import "partials/menu";
+@import "partials/popup";
+
+@import url("https://fonts.googleapis.com/css?family=Alata&display=swap");
+
+
+body {
+  font-family: "Alata", sans-serif;
+  user-select: none;
+  margin: 0;
+  overflow: hidden;
+}
+
+button {
+  text-transform: uppercase;
+  margin: 0 10px;
+  border: none;
+  outline: none !important;
+  cursor: pointer;
+
+  &::-moz-focus-inner {
+    border: 0 !important;
+  }
+}
+
+.wave-wrapper-outer {
+  z-index: -2;
+}
+canvas, strong {
+  z-index: -1;
+}
+.shift-wrapper, .display-wrapper {
+  z-index: 0;
+}
+.menu-wrapper {
+  z-index: 1;
+}
+.popup-wrapper, .popup-button {
+  z-index: 2;
+}
