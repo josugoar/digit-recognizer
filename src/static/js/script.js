@@ -36,17 +36,19 @@ var compression_ratio = 10;
 // Send post request
 function post() {
   $("#loading").fadeIn(500);
-  res = [cnv.width / compression_ratio, cnv.height / compression_ratio];
   img = cnv.toDataURL("image/jpeg", 1 / compression_ratio).split(",")[1];
   $.ajax({
     type: "POST",
     contentType: "application/json;charset=utf-8",
     async: true,
     url: "/model/predict/",
-    data: JSON.stringify({"image": img, "resolution": res}),
+    data: JSON.stringify({
+      "image": img,
+      "preprocess": true
+    }),
     dataType: "json",
     success: function (ret) {
-      console.log("Success");
+      console.log(ret);
     },
     error: function () {
       console.log("Error");
