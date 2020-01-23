@@ -53,12 +53,14 @@ function post() {
     dataType: "json",
     success: function (ret) {
       console.log(ret);
-      for (let i = 0; i < ret.length; i++) {
-        ctx.lineWidth = 3;
-        ctx.strokeStyle = "black";
-        ctx.beginPath();
-        ctx.rect(ret[i].x, ret[i].y, ret[i].width, ret[i].height);
-        ctx.stroke();
+      if (ret) {
+        for (let i = 0; i < ret.length; i++) {
+          ctx.lineWidth = 3;
+          ctx.strokeStyle = "black";
+          ctx.beginPath();
+          ctx.rect(ret[i].x, ret[i].y, ret[i].width, ret[i].height);
+          ctx.stroke();
+        }
       }
     },
     error: function () {
