@@ -14,6 +14,9 @@ function setPosition(event) {
 }
 // Draw line
 function draw(event) {
+  if ($("strong").is(":visible")) {
+    $("strong").fadeOut(250);
+  }
   if (event.buttons === 1) {
     if (mode === "brush") {
       ctx.lineWidth = 10;
@@ -44,11 +47,19 @@ function post() {
     url: "/model/predict/",
     data: JSON.stringify({
       "image": img,
-      "preprocess": true
+      "show": true,
+      "save": true
     }),
     dataType: "json",
     success: function (ret) {
       console.log(ret);
+      for (let i = 0; i < ret.length; i++) {
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.rect(ret[i].x, ret[i].y, ret[i].width, ret[i].height);
+        ctx.stroke();
+      }
     },
     error: function () {
       console.log("Error");
