@@ -2,7 +2,11 @@ Flask==1.1.1
 Flask-RESTful==0.3.7
 Flask-Caching==1.8.0
 Jinja2==2.10.3
+Werkzeug==0.16.0
 numpy==1.17.2
+scikit-learn==0.21.3
 scikit-image==0.16.1
 opencv-python==4.1.2.30
 imageio==2.6.1
+joblib==0.14.0
+ipython==7.8.0

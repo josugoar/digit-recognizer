@@ -1,24 +1,15 @@
-from flask import Flask, render_template, url_for, request, jsonify
+from flask import Flask, render_template, make_response, url_for, request, jsonify
 from flask_restful import Resource, Api
 from flask_caching import Cache
 
-from skimage.feature import hog
+# from skimage.feature import hog
 import numpy as np
 import cv2
 import imageio
 
 import base64
+import joblib
 import os
-
-
-class Model(Resource):
-    def get(self):
-        # TODO: model selection template
-        return {"models": ["PCA_LR", "RBM_LR"]}
-
-    def put(self):
-        # TODO: change prediction model
-        return "Model changed successfully"
 
 
 class Predict(Resource):
@@ -73,22 +64,19 @@ class Predict(Resource):
 
                 base = np.zeros((28, 28))
 
-                #--------------------------------------
-                # # Center by bounding box
+                # Center by bounding box
+                #---------------------------
                 # base[5:25, 5:25] = resized
-                #--------------------------------------
+                #---------------------------
 
                 # Center by centroid
                 temp_x = int((20 - cX) / 2)
                 temp_y = int((20 - cY) / 2)
                 base[temp_y: temp_y + 20, temp_x: temp_x + 20] = resized
 
-                # OPTIONAL: Scale stroke width
-                # preprocess = cv2.dilate(base, (3, 3))
-
                 # TODO: Get hog features & predict label
-                hog_fd = hog(base, orientations=9, pixels_per_cell=(14, 14), cells_per_block=(1, 1))
-                pred = "0"
+                # hog_fd = hog(base, orientations=9, pixels_per_cell=(14, 14), cells_per_block=(1, 1))
+                pred = RBM_LR.predict(base.reshape(1, -1))[0]
 
                 # Test purposes only #
                 cv2.imshow("img", base)
@@ -102,7 +90,6 @@ class Predict(Resource):
 
                 # Append image data
                 ret.append({
-                    # TODO: Add prediction result
                     "pred": pred,
                     "x": x,
                     "y": y,
@@ -134,7 +121,7 @@ class Predict(Resource):
             return jsonify(ret)
 
         else:
-            return ""
+            return
 
 
 # TODO: SQLAlquemy database here
@@ -144,7 +131,7 @@ class Data(Resource):
     def get(self):
         return Data.data
 
-    def post(self):
+    def put(self):
         return "Data added successfully"
 
 
@@ -152,13 +139,37 @@ app = Flask(__name__)
 api = Api(app)
 cache = Cache(app, config={"CACHE_TYPE": "simple"})
 
+RBM_LR = joblib.load("src/scripts/models/RBM_LR.joblib")
+PCA_LR = joblib.load("src/scripts/models/PCA_LR.joblib")
+
 
 @app.route("/")
 @cache.cached(timeout=50)
-def sketch():
+def index():
     return render_template("index.html")
 
+@app.route("/model/")
+def model():
+    config = {
+        "params": {
+            "models": ["PCA_LR", "RBM_LR"],
+            "input": ["base64"],
+            "output": ["label", "score", "box"]
+        },
+        "preprocess": {
+            "decode": True,
+            "grayscale": True,
+            "blur": True,
+            "binarize": True,
+            "contours": True,
+            "centroid": True,
+            "hog": True,
+            "predict": True
+        }
+    }
 
-api.add_resource(Model, "/model/")
+    return jsonify(config)
+
+
 api.add_resource(Predict, "/model/predict/")
 api.add_resource(Data, "/model/data/")

@@ -15,7 +15,7 @@
     text-transform: uppercase;
     border: 4px double rgba(255,255,255,.25);
     border-width: 4px 0;
-    background: url(/src/static/assets/triangles.png) repeat-y;
+    background: url(/static/assets/triangles.png) repeat-y;
     background-clip: text;
     animation: showHidePopup 40s linear infinite;
 
@@ -27,6 +27,7 @@
       a {
         font-size: 10px;
         color: transparent;
+        background-clip: text;
         text-decoration: none;
       }
     }

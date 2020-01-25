@@ -48,7 +48,7 @@ function post() {
     data: JSON.stringify({
       "image": img,
       "show": true,
-      "save": true
+      "save": false
     }),
     dataType: "json",
     success: function (ret) {
