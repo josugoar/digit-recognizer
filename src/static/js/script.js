@@ -38,7 +38,7 @@ function draw(event) {
 var compression_ratio = 10;
 // Send post request
 function post() {
-  $("#loading").fadeIn(500);
+  $(".load-wrapper").fadeIn(500);
   img = cnv.toDataURL("image/jpeg", 1 / compression_ratio).split(",")[1];
   $.ajax({
     type: "POST",
@@ -67,7 +67,7 @@ function post() {
       console.log("Error");
     },
     complete: function () {
-      $("#loading").fadeOut(500);
+      $(".load-wrapper").fadeOut(500);
     }
   });
 }
@@ -88,11 +88,11 @@ $("#brush, #eraser").on("click", function() {
 
 // Show & hide popup
 function pop() {
-  if ($("#popup").is(":visible")) {
-    $("#popup").fadeOut(500);
-    $("#popup-button").css("transform", "rotate(0deg)");
+  if ($(".popup-wrapper").is(":visible")) {
+    $(".popup-wrapper").fadeOut(500);
+    $(".popup-button").css("transform", "rotate(0deg)");
   } else {
-    $("#popup").fadeIn(500);
-    $("#popup-button").css("transform", "rotate(90deg)");
+    $(".popup-wrapper").fadeIn(500);
+    $(".popup-button").css("transform", "rotate(90deg)");
   }
 }

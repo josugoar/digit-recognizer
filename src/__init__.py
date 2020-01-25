@@ -13,13 +13,16 @@ import os
 
 
 class Predict(Resource):
+    RBM_LR = joblib.load("src/scripts/models/RBM_LR.joblib")
+    PCA_LR = joblib.load("src/scripts/models/PCA_LR.joblib")
+
     def post(self):
         # Get data
         raw = request.json["image"]
         show = request.json["show"]
         save = request.json["save"]
 
-        # Decode from base64
+        # Decode from base64 to rgb
         decode = imageio.imread(base64.b64decode(raw))
         # Convert to grayscale
         gray = cv2.cvtColor(decode, cv2.COLOR_BGR2GRAY)
@@ -27,19 +30,21 @@ class Predict(Resource):
         blur = cv2.blur(gray, (5, 5))
         # Apply binary threshold
         _, thresh = cv2.threshold(blur, thresh=127, maxval=255, type=0)
-        # Find contorns
+        # Find contourns
         contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
+        # Check for no contours
         if contours:
             # Initialize empty data holder
             ret = []
-            # Get last stored file
-            # TODO: Create database
-            if len(os.listdir("src/data")):
-                ls = sorted(os.listdir("src/data"), key=lambda l: int(l.split(".")[0]))
-                idx = int(ls[-1].split(".")[0])
-            else:
-                idx = 0
+
+            # Get last saved file
+            if save:
+                if len(os.listdir("src/data")):
+                    ls = sorted(os.listdir("src/data"), key=lambda l: int(l.split(".")[0]))
+                    idx = int(ls[-1].split(".")[0])
+                else:
+                    idx = 0
 
             # Range through contours
             for cnt in contours:
@@ -51,11 +56,11 @@ class Predict(Resource):
                 N = np.maximum(w, h)
                 temp_x = int((N - w) / 2)
                 temp_y = int((N - h) / 2)
-                equalN = np.zeros((N, N))
-                equalN[temp_y: temp_y + h, temp_x: temp_x + w] = roi
+                boxed = np.zeros((N, N))
+                boxed[temp_y: temp_y + h, temp_x: temp_x + w] = roi
 
                 # Resize perserving aspect ratio
-                resized = cv2.resize(equalN, dsize=(20, 20), interpolation=cv2.INTER_AREA)
+                resized = cv2.resize(boxed, dsize=(20, 20), interpolation=cv2.INTER_AREA)
 
                 # Compute moments
                 M = cv2.moments(resized)
@@ -74,19 +79,11 @@ class Predict(Resource):
                 temp_y = int((20 - cY) / 2)
                 base[temp_y: temp_y + 20, temp_x: temp_x + 20] = resized
 
-                # TODO: Get hog features & predict label
-                # hog_fd = hog(base, orientations=9, pixels_per_cell=(14, 14), cells_per_block=(1, 1))
-                pred = RBM_LR.predict(base.reshape(1, -1))[0]
+                # TODO: Get hog features
+                # H = hog(base, orientations=9, pixels_per_cell=(10, 10), cells_per_block=(1, 1))
 
-                # Test purposes only #
-                cv2.imshow("img", base)
-                cv2.waitKey(0)
-                #--------------------#
-
-                # TODO: Save to database
-                if save:
-                    idx += 1
-                    cv2.imwrite(f"src/data/{idx}.jpg", base)
+                # Predict label
+                pred = Predict.RBM_LR.predict(base.reshape(1, -1))[0]
 
                 # Append image data
                 ret.append({
@@ -97,7 +94,15 @@ class Predict(Resource):
                     "height": h
                 })
 
+                # Save to database
+                if save:
+                    idx += 1
+                    cv2.imwrite(f"src/data/{idx}.jpg", base)
+
                 if show:
+                    cv2.imshow("img", base)
+                    cv2.waitKey(0)
+
                     # Draw bounding box
                     cv2.rectangle(thresh, pt1=(x, y), pt2=(x + w, y + h), color=127, thickness=3)
 
@@ -138,9 +143,6 @@ class Data(Resource):
 app = Flask(__name__)
 api = Api(app)
 cache = Cache(app, config={"CACHE_TYPE": "simple"})
-
-RBM_LR = joblib.load("src/scripts/models/RBM_LR.joblib")
-PCA_LR = joblib.load("src/scripts/models/PCA_LR.joblib")
 
 
 @app.route("/")

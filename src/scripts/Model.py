@@ -42,10 +42,10 @@ class Clf:
             % (self.clf, classification_report(y, self.clf.predict(X)))
         )
 
-    def joblib(self, path="src/lib/models/DigitClassifier.joblib"):
+    def joblib(self, path="models/DigitClassifier.joblib"):
         with open(path, "wb") as f:
             joblib.dump(self.clf, f)
-            print(f"Pickled classifier at {path}")
+        print(f"Pickled classifier at {path}")
 
     @staticmethod
     def plot_heatmap(X, y_true, y_pred):
@@ -81,7 +81,8 @@ class PCA_LR(Clf):
     ):
         self.clf = make_pipeline(
             MinMaxScaler(),
-            StandardScaler(),
+            # StandardScaler(),
+            Binarizer(threshold=0.5),
             PCA(0.99, random_state=random_state),
             LogisticRegression(
                 penalty=penalty,

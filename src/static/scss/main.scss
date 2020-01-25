@@ -1,9 +1,9 @@
-@import "partials/wave";
 @import "partials/display";
-@import "partials/loading";
-@import "partials/shift";
+@import "partials/load";
 @import "partials/menu";
+@import "partials/mode";
 @import "partials/popup";
+@import "partials/wave";
 
 @import url("https://fonts.googleapis.com/css?family=Alata&display=swap");
 
@@ -15,9 +15,7 @@ body {
   overflow: hidden;
 }
 
-button {
-  text-transform: uppercase;
-  margin: 0 10px;
+button, .menu-item {
   border: none;
   outline: none !important;
   cursor: pointer;

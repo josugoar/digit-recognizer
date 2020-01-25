@@ -17,7 +17,7 @@
 <body onload="setSize()" onresize="setSize()" ontouchstart="setPosition(event)" onmousedown="setPosition(event)">
 
   <!--
-    Flowing web background
+    Flowing wave background
    -->
   <div class="wave-wrapper-outer">
     <div class="wave-wrapper-inner bg-top">
@@ -32,22 +32,22 @@
   </div>
 
   <!--
-    Default message
+    Default canvas message
    -->
   <strong>Start drawing!</strong>
 
   <!--
-    Main canvas sketch
+    Main sketch canvas
    -->
   <canvas id="canvas" ontouchmove="draw(event)" onmousemove="draw(event)"></canvas>
 
   <!--
-    Functional display buttons
+    Display buttons
    -->
   <div class="display-wrapper">
     <button onclick="post()">
       Predict
-      <div id="loading" class="loading-wrapper" hidden>
+      <div class="load-wrapper" hidden>
         <h1 class="dot">Loading</h1>
         <h1 class="dot one">.</h1>
         <h1 class="dot two">.</h1>
@@ -60,7 +60,7 @@
   <!--
     Draw mode selector
    -->
-  <div class="shift-wrapper">
+  <div class="mode-wrapper">
     <a id="brush">
       Brush &ensp;<i class="fa fa-paint-brush"></i>
     </a>
@@ -84,9 +84,9 @@
   </div>
 
   <!--
-    Initial popup title
+    Default popup message
    -->
-  <div id="popup" class="popup-wrapper">
+  <div class="popup-wrapper">
     <p class="popup">
       <i>
         Check me out on &nbsp;
@@ -95,7 +95,7 @@
       <span>Digit Recognizer</span>
     </p>
   </div>
-  <i id="popup-button" class="fa fa-caret-up popup-button" onclick="pop()"></i>
+  <i class="fa fa-caret-up popup-button" onclick="pop()"></i>
 
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
