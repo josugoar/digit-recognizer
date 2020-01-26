@@ -1,4 +1,24 @@
-@import url("https://fonts.googleapis.com/css?family=Alata&display=swap");
+.box-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.box-wrapper .box {
+  position: inherit;
+  width: var(--width);
+  height: var(--height);
+  margin-top: var(--margin-top);
+  margin-left: var(--margin-left);
+  border: 3px solid black;
+}
+
+.box-wrapper .box .label {
+  position: inherit;
+  right: 0px;
+  margin-right: -20px;
+}
+
 strong {
   position: absolute;
   width: 100%;
@@ -519,7 +539,7 @@ button::-moz-focus-inner, .menu-item::-moz-focus-inner {
   z-index: -2;
 }
 
-canvas, strong {
+.box-wrapper, canvas, strong {
   z-index: -1;
 }
 

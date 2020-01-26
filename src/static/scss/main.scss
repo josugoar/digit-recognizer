@@ -1,12 +1,10 @@
+@import "partials/box";
 @import "partials/display";
 @import "partials/load";
 @import "partials/menu";
 @import "partials/mode";
 @import "partials/popup";
 @import "partials/wave";
-
-@import url("https://fonts.googleapis.com/css?family=Alata&display=swap");
-
 
 body {
   font-family: "Alata", sans-serif;
@@ -28,7 +26,7 @@ button, .menu-item {
 .wave-wrapper-outer {
   z-index: -2;
 }
-canvas, strong {
+.box-wrapper, canvas, strong {
   z-index: -1;
 }
 .shift-wrapper, .display-wrapper {
