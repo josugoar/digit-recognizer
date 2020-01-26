@@ -84,11 +84,11 @@ class Predict(Resource):
                 # H = hog(base, orientations=9, pixels_per_cell=(10, 10), cells_per_block=(1, 1))
 
                 # Predict label
-                pred = Predict.RBM_LR.predict(base.reshape(1, -1))[0]
+                label = Predict.RBM_LR.predict(base.reshape(1, -1))[0]
 
                 # Append image data
                 ret.append({
-                    "pred": pred,
+                    "label": label,
                     "x": x,
                     "y": y,
                     "width": w,
@@ -130,7 +130,7 @@ class Predict(Resource):
             return
 
 
-# TODO: SQLAlquemy database here
+# TODO: SQLAlquemy database
 class Data(Resource):
     data = []
 
@@ -150,7 +150,11 @@ pages = FlatPages(app)
 @app.route("/")
 @cache.cached(timeout=50)
 def index():
-    return render_template("index.html")
+    return render_template(
+        "index.html",
+        title="Digit Recognizer",
+        cnv_msg="Start drawing!"
+    )
 
 @app.route("/docs/")
 def docs():

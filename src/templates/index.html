@@ -2,7 +2,13 @@
 <html>
 
 <head>
-  <title>Digit Recognizer</title>
+
+  {% if title %}
+    <title>{{ title }}</title>
+  {% else %}
+    <title>MyApp</title>
+  {% endif %}
+
   <meta charset="utf-8" />
   <meta http-equiv="content-language" content="eng" />
   <meta name="keywords" content="html, css, javascript, python" />
@@ -13,13 +19,12 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Alata&display=swap" />
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='scss/main.css') }}" />
+
 </head>
 
 <body onload="setSize()" onresize="setSize()" onmousedown="setPosition(event)">
 
-  <!--
-    Flowing wave background
-   -->
+  <!-- Wave background -->
   <div class="wave-wrapper-outer">
     <div class="wave-wrapper-inner bg-top">
       <div class="wave wave-top" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
@@ -32,24 +37,16 @@
     </div>
   </div>
 
-  <!--
-    Bounding box and label
-   -->
+  <!-- Canvas message -->
+  {% if cnv_msg %}
+    <strong>{{ cnv_msg }}</strong>
+  {% endif %}
+  <!-- Bounding box -->
   <div class="box-wrapper"></div>
-
-  <!--
-    Default canvas message
-   -->
-  <strong>Start drawing!</strong>
-
-  <!--
-    Main canvas sketch
-   -->
+  <!-- Canvas sketch -->
   <canvas id="sketch" onmousedown="$('.box-wrapper').html('')" onmousemove="draw(event)"></canvas>
 
-  <!--
-    Display buttons
-   -->
+  <!-- Display buttons -->
   <div class="display-wrapper">
     <button onclick="post()">
       Predict
@@ -62,10 +59,7 @@
     </button>
     <button onclick="setSize()">Clear</button>
   </div>
-
-  <!--
-    Draw mode selector
-   -->
+  <!-- Mode selector -->
   <div class="mode-wrapper">
     <a id="brush">
       Brush &ensp;<i class="fa fa-paint-brush"></i>
@@ -75,9 +69,7 @@
     </a>
   </div>
 
-  <!--
-    Circular menu
-   -->
+  <!-- Circular menu -->
   <div id="menu" class="menu-wrapper">
     <a class="floating-btn" onclick="document.getElementById('menu').classList.toggle('active');">
       <i class="fa fa-bars"></i>
@@ -89,16 +81,14 @@
     </menu>
   </div>
 
-  <!--
-    Default popup message
-   -->
+  <!-- Popup message -->
   <div class="popup-wrapper">
     <p class="popup">
       <i>
         Check me out on &nbsp;
         <a href="https://github.com/JoshGoA" class="fa fa-github"></a><br>
       </i>
-      <span>Digit Recognizer</span>
+      <span>{{ title }}</span>
     </p>
   </div>
   <i class="fa fa-caret-up popup-button" onclick="pop()"></i>

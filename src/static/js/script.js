@@ -21,10 +21,10 @@ function draw(event) {
   if (event.buttons === 1) {
     if (mode === "brush") {
       ctx.lineWidth = 10;
-      ctx.globalCompositeOperation="source-over";
+      ctx.globalCompositeOperation = "source-over";
     } else {
       ctx.lineWidth = 20;
-      ctx.globalCompositeOperation="destination-out";
+      ctx.globalCompositeOperation = "destination-out";
     }
     ctx.beginPath();
     ctx.lineCap = "round";
@@ -59,7 +59,7 @@ function post() {
         for (let i = 0; i < ret.length; i++) {
           block +=
             "<div class='box' style='--width: "+ ret[i].width + "px; --height: " + ret[i].height + "px; --margin-top: " + (ret[i].y - 3) + "px; --margin-left: " + (ret[i].x - 3) + "px;'>" +
-              "<div class='label'>" + ret[i].pred + "</div>" +
+              "<div class='label'>" + ret[i].label + "</div>" +
             "</div>";
         }
         $(".box-wrapper").html(block);

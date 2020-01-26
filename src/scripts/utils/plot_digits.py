@@ -18,26 +18,31 @@ def plot_digits(
     # Set title if provided
     if title:
         fig.suptitle(title)
-    axs = axs.ravel()
     # Get total ticks
-    ticks_total = ticks[0] * ticks[1]
-    # Iterate over each tick
-    for i in range(ticks_total):
-        # Get current axes
-        ax = axs[i]
-        # Show digit
-        ax.imshow(digits[i].reshape(resolution[0], resolution[1]), cmap=cmap)
-        # Show labels
-        if labels is not None:
-            if labels_pred is None:
-                color = "black"
-            # Compare true and predicted labels
+    total_ticks = ticks[0] * ticks[1]
+    if total_ticks <= len(digits):
+        # Iterate over ticks
+        for i in range(total_ticks):
+            # Get current axes
+            if isinstance(axs, list):
+                ax = axs.ravel()[i]
             else:
-                # Correctly predicted
-                if labels[i] == labels_pred[i]:
-                    color = "green"
-                # Incorrectly predicted
+                ax = axs
+            # Show digit
+            ax.imshow(digits[i].reshape(resolution[0], resolution[1]), cmap=cmap)
+            # Show labels
+            if labels is not None:
+                if labels_pred is None:
+                    color = "black"
+                # Compare true and predicted labels
                 else:
-                    color = "red"
-            ax.text(0.5, 0.5, labels[i], color=color)
-    plt.show()
+                    # Correctly predicted
+                    if labels[i] == labels_pred[i]:
+                        color = "green"
+                    # Incorrectly predicted
+                    else:
+                        color = "red"
+                ax.text(0.5, 0.5, labels[i], color=color)
+        plt.show()
+        return 1
+    return 0

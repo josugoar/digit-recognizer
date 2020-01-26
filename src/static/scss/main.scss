@@ -26,10 +26,10 @@ button, .menu-item {
 .wave-wrapper-outer {
   z-index: -2;
 }
-.box-wrapper, canvas, strong {
+strong, .box-wrapper, canvas {
   z-index: -1;
 }
-.shift-wrapper, .display-wrapper {
+.display-wrapper, .mode-wrapper {
   z-index: 0;
 }
 .menu-wrapper {

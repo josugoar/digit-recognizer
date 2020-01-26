@@ -1,4 +1,3 @@
-from sklearn.datasets import load_digits
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -6,13 +5,14 @@ import seaborn as sns
 
 def plot_heatmap(
     X, y_true, y_pred,
-    labels=load_digits().target_names,
+    labels=range(10),
 ):
     """
     Plot heatmap of confusion matrix
     """
     # Plot data heatmap
     sns.heatmap(
+        # Compute confusion matrix
         confusion_matrix(y_true, y_pred).T,
         square=True,
         annot=True,

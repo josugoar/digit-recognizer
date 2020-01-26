@@ -1,4 +1,3 @@
-from sklearn.preprocessing import MinMaxScaler, StandardScaler, Binarizer
 from sklearn.neural_network import BernoulliRBM
 from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
@@ -17,34 +16,25 @@ import joblib
 class Clf:
     def grid_search(self, X, y, **params):
         return GridSearchCV(
-            self.clf,
+            self.model,
             params,
             cv=2,
             verbose=True,
              n_jobs=-1
         ).fit(X, y).best_estimator_
 
-    def fit(self, X, y):
-        self.clf.fit(X, y)
-
-    def predict(self, X):
-        return self.clf.predict(X)
-
-    def predict_proba(self, X):
-        return self.clf.predict_proba(X)
-
     def score(self, X, y, cv=5):
-        return np.mean(cross_val_score(self.clf, X, y, cv=cv))
+        return np.mean(cross_val_score(self.model, X, y, cv=cv))
 
     def report(self, X, y):
         print(
             "Classification report for classifier %s:\n%s\n"
-            % (self.clf, classification_report(y, self.clf.predict(X)))
+            % (self.model, classification_report(y, self.model.predict(X)))
         )
 
     def joblib(self, path="models/DigitClassifier.joblib"):
         with open(path, "wb") as f:
-            joblib.dump(self.clf, f)
+            joblib.dump(self.model, f)
         print(f"Pickled classifier at {path}")
 
     @staticmethod
@@ -60,9 +50,7 @@ class RBM_LR(Clf):
     def __init__(
         self, penalty="l2", solver="newton-cg", learning_rate=0.01, C=1, random_state=None, verbose=False
     ):
-        self.clf = make_pipeline(
-            MinMaxScaler(),
-            Binarizer(threshold=0.5),
+        self.model = make_pipeline(
             BernoulliRBM(learning_rate=learning_rate, random_state=random_state),
             LogisticRegression(
                 penalty=penalty,
@@ -79,10 +67,7 @@ class PCA_LR(Clf):
     def __init__(
         self, penalty="l2", solver="saga", C=1, random_state=None, verbose=False,
     ):
-        self.clf = make_pipeline(
-            MinMaxScaler(),
-            # StandardScaler(),
-            Binarizer(threshold=0.5),
+        self.model = make_pipeline(
             PCA(0.99, random_state=random_state),
             LogisticRegression(
                 penalty=penalty,
