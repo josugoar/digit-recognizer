@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='scss/main.css') }}" />
 </head>
 
-<body onload="setSize()" onresize="setSize()" ontouchstart="setPosition(event)" onmousedown="setPosition(event)">
+<body onload="setSize(cnvs)" onresize="setSize(cnvs)" ontouchstart="setPosition(event)" onmousedown="setPosition(event)">
 
   <!--
     Flowing wave background
@@ -37,9 +37,10 @@
   <strong>Start drawing!</strong>
 
   <!--
-    Main sketch canvas
+    Main sketch canvasses
    -->
-  <canvas id="canvas" ontouchmove="draw(event)" onmousemove="draw(event)"></canvas>
+  <canvas ></canvas>
+  <canvas ontouchdown="setSize([cnvs[0]])" ontouchmove="draw(event)" onmousedown="setSize([cnvs[0]])" onmousemove="draw(event)"></canvas>
 
   <!--
     Display buttons
@@ -54,7 +55,7 @@
         <h1 class="dot three">.</h1>
       </div>
     </button>
-    <button onclick="setSize()">Clear</button>
+    <button onclick="setSize(cnvs)">Clear</button>
   </div>
 
   <!--

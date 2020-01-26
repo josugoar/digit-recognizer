@@ -1,11 +1,14 @@
-var cnv = document.getElementById("canvas");
-var ctx = cnv.getContext("2d");
+var cnvs = document.getElementsByTagName("canvas");
+var rndr_ctx = cnvs[0].getContext("2d");
+var skct_ctx = cnvs[1].getContext("2d");
 var position = { x: 0, y: 0 };
 // Resize canvas
-function setSize() {
-  cnv.width  = window.innerWidth;
-  cnv.height = window.innerHeight;
-  ctx.clearRect(0, 0, cnv.width, cnv.height);
+function setSize(cnvs) {
+  for (let i = 0; i < cnvs.length; i++) {
+    cnvs[i].width = window.innerWidth;
+    cnvs[i].height = window.innerHeight;
+    cnvs[i].getContext("2d").clearRect(0, 0, cnvs[i].width, cnvs[i].height);
+  }
 }
 // Locate mouse
 function setPosition(event) {
@@ -19,19 +22,19 @@ function draw(event) {
   }
   if (event.buttons === 1) {
     if (mode === "brush") {
-      ctx.lineWidth = 10;
-      ctx.globalCompositeOperation="source-over";
+      skct_ctx.lineWidth = 10;
+      skct_ctx.globalCompositeOperation="source-over";
     } else {
-      ctx.lineWidth = 20;
-      ctx.globalCompositeOperation="destination-out";
+      skct_ctx.lineWidth = 20;
+      skct_ctx.globalCompositeOperation="destination-out";
     }
-    ctx.beginPath();
-    ctx.lineCap = "round";
-    ctx.strokeStyle = "white";
-    ctx.moveTo(position.x, position.y);
+    skct_ctx.beginPath();
+    skct_ctx.lineCap = "round";
+    skct_ctx.strokeStyle = "white";
+    skct_ctx.moveTo(position.x, position.y);
     setPosition(event);
-    ctx.lineTo(position.x, position.y);
-    ctx.stroke();
+    skct_ctx.lineTo(position.x, position.y);
+    skct_ctx.stroke();
   }
 }
 
@@ -39,7 +42,7 @@ var compression_ratio = 10;
 // Send post request
 function post() {
   $(".load-wrapper").fadeIn(500);
-  img = cnv.toDataURL("image/jpeg", 1 / compression_ratio).split(",")[1];
+  img = cnvs[1].toDataURL("image/jpeg", 1 / compression_ratio).split(",")[1];
   $.ajax({
     type: "POST",
     contentType: "application/json;charset=utf-8",
@@ -55,11 +58,13 @@ function post() {
       console.log(ret);
       if (ret) {
         for (let i = 0; i < ret.length; i++) {
-          ctx.lineWidth = 3;
-          ctx.strokeStyle = "black";
-          ctx.beginPath();
-          ctx.rect(ret[i].x, ret[i].y, ret[i].width, ret[i].height);
-          ctx.stroke();
+          rndr_ctx.lineWidth = 3;
+          rndr_ctx.strokeStyle = "black";
+          rndr_ctx.beginPath();
+          rndr_ctx.rect(ret[i].x, ret[i].y, ret[i].width, ret[i].height);
+          rndr_ctx.stroke();
+          rndr_ctx.font = "30px Arial";
+          rndr_ctx.fillText(ret[i].pred, ret[i].x, ret[i].y - 5);
         }
       }
     },

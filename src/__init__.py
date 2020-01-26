@@ -1,6 +1,7 @@
 from flask import Flask, render_template, make_response, url_for, request, jsonify
 from flask_restful import Resource, Api
 from flask_caching import Cache
+from flask_flatpages import FlatPages
 
 # from skimage.feature import hog
 import numpy as np
@@ -143,6 +144,7 @@ class Data(Resource):
 app = Flask(__name__)
 api = Api(app)
 cache = Cache(app, config={"CACHE_TYPE": "simple"})
+pages = FlatPages(app)
 
 
 @app.route("/")
@@ -150,23 +152,27 @@ cache = Cache(app, config={"CACHE_TYPE": "simple"})
 def index():
     return render_template("index.html")
 
+@app.route("/docs/")
+def docs():
+    return pages.get("README").html
+
 @app.route("/model/")
 def model():
     config = {
-        "params": {
-            "models": ["PCA_LR", "RBM_LR"],
-            "input": ["base64"],
-            "output": ["label", "score", "box"]
+        "Vctr": {
+            "input": ["rgb(a)-image"],
+            "output": ["bounding-box", "hog-fts"],
+            "steps": ["grayscale", "blur", "contours", "centroid", "minmax-scale", "binarize", "hog"]
         },
-        "preprocess": {
-            "decode": True,
-            "grayscale": True,
-            "blur": True,
-            "binarize": True,
-            "contours": True,
-            "centroid": True,
-            "hog": True,
-            "predict": True
+        "PCA_LR": {
+            "input": ["hog-fts"],
+            "output": ["label", "score"],
+            "steps": ["Principal-Component-Analysis", "Logistic-Regression"]
+        },
+        "RBM_LR": {
+            "input": ["hog-fts"],
+            "output": ["label", "score"],
+            "steps": ["Restricted-Boltzmann-Machine", "Logistic-Regression"]
         }
     }
 
