@@ -1,3 +1,1 @@
-!!! Create SQLAlquemy database
-
 !!  Extract hog features

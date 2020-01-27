@@ -48,7 +48,7 @@ function post() {
     url: "/model/predict/",
     data: JSON.stringify({
       "image": img,
-      "save": false
+      "save": true
     }),
     dataType: "json",
     success: function (ret) {

@@ -1,0 +1,8 @@
+{% if digits %}
+    {% for digit in digits %}
+        <img src="{{ url_for('digit', digit_id=digit.digit_id) }}" alt="{{ digit.pred }}" width="50px" height="50px" />
+        {{ digit.pred }}
+    {% endfor %}
+{% else %}
+    Database is empty...
+{% endif %}
