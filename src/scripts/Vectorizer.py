@@ -1,7 +1,12 @@
 import numpy as np
+import base64
+import imageio
 import cv2
 
-def Vctr(rgb, centroid=True):
+
+def Vctr(b64, centroid=True):
+    # Decode to rgb
+    rgb = imageio.imread(base64.b64decode(b64))
     # Convert to grayscale
     gray = cv2.cvtColor(rgb, cv2.COLOR_BGR2GRAY)
     # Blur to filter noise
@@ -15,7 +20,6 @@ def Vctr(rgb, centroid=True):
     if contours:
         # Initialize empty data holder
         ret = []
-
          # Range through contours
         for cnt in contours:
             # Get bounding box
