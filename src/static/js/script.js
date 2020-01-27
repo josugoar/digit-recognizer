@@ -48,7 +48,6 @@ function post() {
     url: "/model/predict/",
     data: JSON.stringify({
       "image": img,
-      "show": false,
       "save": false
     }),
     dataType: "json",

@@ -24,9 +24,9 @@ def plot_digits(
         # Iterate over ticks
         for i in range(total_ticks):
             # Get current axes
-            if isinstance(axs, list):
+            try:
                 ax = axs.ravel()[i]
-            else:
+            except:
                 ax = axs
             # Show digit
             ax.imshow(digits[i].reshape(resolution[0], resolution[1]), cmap=cmap)

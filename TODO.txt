@@ -1,10 +1,3 @@
-!!! Make pipelines:
-    - Vectorizer
-    - RBM_LR
-    - PCA_LR
-
 !!! Create SQLAlquemy database
 
 !!  Extract hog features
-
-!   Link project docs

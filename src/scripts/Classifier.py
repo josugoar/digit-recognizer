@@ -1,3 +1,4 @@
+from sklearn.preprocessing import MinMaxScaler, Binarizer
 from sklearn.neural_network import BernoulliRBM
 from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
@@ -51,6 +52,8 @@ class RBM_LR(Clf):
         self, penalty="l2", solver="newton-cg", learning_rate=0.01, C=1, random_state=None, verbose=False
     ):
         self.model = make_pipeline(
+            MinMaxScaler(),
+            Binarizer(threshold=0.5),
             BernoulliRBM(learning_rate=learning_rate, random_state=random_state),
             LogisticRegression(
                 penalty=penalty,
@@ -68,6 +71,8 @@ class PCA_LR(Clf):
         self, penalty="l2", solver="saga", C=1, random_state=None, verbose=False,
     ):
         self.model = make_pipeline(
+            MinMaxScaler(),
+            Binarizer(threshold=0.5),
             PCA(0.99, random_state=random_state),
             LogisticRegression(
                 penalty=penalty,
