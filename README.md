@@ -26,20 +26,6 @@ python run.py
 
 See [docs.html](https://github.com/JoshGoA/Digit-Recognizer/blob/master/src/static/pages/docs.html) for details.
 
-## Contributing
-
-1. Fork it (<https://github.com/JoshGoA/Digit-Recognizer/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
-
 ## Contributors
 
 * **JoshGoA** - *Main contributor* - [GitHub](https://github.com/JoshGoA)
-
-## License
-
-This project is licensed under the GNU General Public License v3.0.
-
-See [LICENSE.md](LICENSE.md) for details.
