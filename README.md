@@ -20,7 +20,8 @@ pip install requirements.txt
 python run.py
 ```
 2. Open server link or localhost port
-* See [docs.html](https://github.com/JoshGoA/Digit-Recognizer/blob/master/src/static/pages/docs.html) for more information.
+
+See [docs.html](https://github.com/JoshGoA/Digit-Recognizer/blob/master/src/static/pages/docs.html) for more information.
 
 ## Contributing
 
@@ -37,4 +38,5 @@ python run.py
 ## License
 
 This project is licensed under the GNU General Public License v3.0.
+
 See [LICENSE.md](LICENSE.md) for details.
