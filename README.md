@@ -4,8 +4,10 @@
 
 HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-end UI, built on top of a Python (Flask, Flask-RESTful, Flask-Caching, Flask-FlatPages, Flask-SQLAlchemy) back-end API and database, using Python (numpy, sklearn, opencv) machine learning model building and image recognition preprocessing for asyncronous predictions via encoded requests, integrated with Git source control.
 
-<img src="screenshots/screenshot(1).png" width="48.5%">
-<img src="screenshots/screenshot(2).png" width="48.5%">
+Initial screen                                   |  Prediction example
+:-----------------------------------------------:|:-------------------------:
+![screenshot(1)](screenshots/screenshot(1).png)  |  ![screenshot(1)](screenshots/screenshot(2).png)
+
 
 ## Installation
 
