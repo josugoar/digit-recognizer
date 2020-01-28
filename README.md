@@ -21,7 +21,7 @@ python run.py
 ```
 2. Open server link or localhost port
 
-See [docs.html](https://github.com/JoshGoA/Digit-Recognizer/blob/master/src/static/pages/docs.html) for more information.
+See [docs.html](https://github.com/JoshGoA/Digit-Recognizer/blob/master/src/static/pages/docs.html) for details.
 
 ## Contributing
 
