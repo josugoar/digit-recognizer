@@ -1,7 +1,7 @@
 # Digit Recognizer \[WIP]
 
-![Author](https://img.shields.io/badge/author-JoshGoA-brighgreen)
-![License](https://img.shields.io/badge/license-GPL-yellowgreen)
+![Author](https://img.shields.io/badge/author-JoshGoA-blue)
+![License](https://img.shields.io/badge/license-GPL-green)
 
 HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-end UI, built on top of a Python (Flask, Flask-RESTful, Flask-Caching, Flask-FlatPages, Flask-SQLAlchemy) back-end API and database, using Python (numpy, sklearn, opencv) machine learning model building and image recognition preprocessing for asyncronous predictions via encoded requests, integrated with Git source control.
 
