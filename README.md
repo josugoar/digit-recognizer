@@ -1,4 +1,4 @@
-# Digit Recognizer \[WIP]
+# Digit Recognizer
 
 ![Author](https://img.shields.io/badge/author-JoshGoA-blue) ![License](https://img.shields.io/badge/license-GPL-green)
 
@@ -14,20 +14,27 @@ Popup screen                                     |  Prediction result
 ## Installation
 
 1. Install [python](https://www.python.org/downloads/) from official website
-2. Use package manager [pip](https://pip.pypa.io/en/stable/) to install requirements (virtual environment recommended)
+2. Install package manager [pip](https://pip.pypa.io/en/stable/)
+3. Install and activate [virtualenv](https://virtualenv.pypa.io/en/latest/userguide/)
 ```sh
-pip install requirements.txt
+$ pip install virtualenv
+$ virtualenv ENV
+$ source /path/to/ENV/bin/activate
+```
+4. Install [requirements.txt](requirements.txt) in root
+```sh
+$ pip install requirements.txt
 ```
 
 ## Usage
 
-1. Run run.py
-```python
-python run.py
+1. Run [run.py](run.py) in root
+```sh
+$ python run.py
 ```
-2. Open server link or localhost port
+2. Open localhost port server link
 
-See [docs.html](https://github.com/JoshGoA/Digit-Recognizer/blob/master/src/static/pages/docs.html) for details.
+See [docs.html](src/static/pages/docs.html) for further details.
 
 ## Contributors
 
