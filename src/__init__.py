@@ -22,19 +22,18 @@ db = SQLAlchemy(app)
 
 
 class Predict(Resource):
-    Clf = joblib.load("src/scripts/models/DigitClassifier.joblib")
+    Clf = joblib.load("src/scripts/models/RBM_LR.joblib")
 
     def post(self):
         def save(base, label):
             # Get label list
-            ls = [l for l in os.listdir("src/data") if l[0] == label]
+            ls = [int(l[2:-5]) for l in os.listdir("src/data") if l[0] == label]
             # Initialize save counter
             if ls:
-                sls = sorted(ls, key=lambda l: int(l[2]))
-                idx = int(sls[-1][2]) + 1
+                idx = max(ls) + 1
                 # Check for missing index
-                for i, l in enumerate(sls, 0):
-                    if int(l[2]) != i:
+                for i, l in enumerate(sorted(ls)):
+                    if l != i:
                         idx = i
                         break
             else:
@@ -106,7 +105,7 @@ def model():
         "Clf": {
             "input": ["28*28-pixels"],
             "output": ["label", "probability"],
-            "steps": ["minmax-scale", "binarize", "restricted-boltzmann-machine", "logistic-regression"]
+            "steps": ["minmax-scale", "binarize", ["restricted-boltzmann-machine", "principal-component-analisys"], "logistic-regression"]
         }
     }
 
