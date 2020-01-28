@@ -48,7 +48,8 @@ class Predict(Resource):
             # Predict labels and probability
             label = Predict.Clf.predict(base.reshape(1, -1))[0]
             proba = Predict.Clf.predict_proba(base.reshape(1, -1)).tolist()
-            save(base, label)
+            if request.json["save"]:
+                save(base, label)
             return label, proba
 
         # Vectorize image
