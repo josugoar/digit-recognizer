@@ -75,9 +75,9 @@
       <i class="fa fa-bars"></i>
     </a>
     <menu class="item-wrapper">
-      <a href="/model/data/" class="menu-item fa fa-database"></a>
-      <a href="/model/" class="menu-item fa fa-gears"></a>
-      <a href="/docs/" class="menu-item fa fa-info"></a>
+      <a href="/model/data/" class="menu-item fa fa-database" title="Database"></a>
+      <a href="/model/" class="menu-item fa fa-gears" title="Configuration"></a>
+      <a href="/docs/" class="menu-item fa fa-info" title="Info"></a>
     </menu>
   </div>
 
@@ -91,7 +91,7 @@
       <span>{{ title }}</span>
     </p>
   </div>
-  <i class="fa fa-caret-up popup-button" onclick="pop()"></i>
+  <i class="fa fa-caret-up popup-button" title="Toggle popup" onclick="pop()"></i>
 
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
