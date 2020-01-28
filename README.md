@@ -1,6 +1,6 @@
 # Digit Recognizer \[WIP]
 
-HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-end UI, built on top of a Python (Flask, Flask-RESTful, Flask-Caching, Flask-FlatPages, Flask-SQLAlchemy) back-end API and database, using Python (numpy, sklearn, opencv) machine learning model building and image recognition preprocessing for asyncronous predictions via encoded requests, integrated with Git source control
+HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-end UI, built on top of a Python (Flask, Flask-RESTful, Flask-Caching, Flask-FlatPages, Flask-SQLAlchemy) back-end API and database, using Python (numpy, sklearn, opencv) machine learning model building and image recognition preprocessing for asyncronous predictions via encoded requests, integrated with Git source control.
 
 ![](screenshots/screenshot(1).png)
 ![](screenshots/screenshot(2).png)
@@ -8,14 +8,19 @@ HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-en
 ## Installation
 
 1. Install [python](https://www.python.org/downloads/) from official website
-2. Use package manager [pip](https://pip.pypa.io/en/stable/) to install requirements (usage of virtua environment recommended)
+2. Use package manager [pip](https://pip.pypa.io/en/stable/) to install requirements (virtual environment recommended)
 ```sh
 pip install requirements.txt
 ```
 
 ## Usage
 
-See (<https://github.com/JoshGoA/Digit-Recognizer/blob/master/src/static/pages/docs.html>) for more information
+1. Run run.py
+```python
+python run.py
+```
+2. Open server link or localhost port
+See [docs.html](https://github.com/JoshGoA/Digit-Recognizer/blob/master/src/static/pages/docs.html) for more information.
 
 ## Contributing
 
@@ -31,4 +36,5 @@ See (<https://github.com/JoshGoA/Digit-Recognizer/blob/master/src/static/pages/d
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU General Public License v3.0.
+See [LICENSE.md](LICENSE.md) for details.
