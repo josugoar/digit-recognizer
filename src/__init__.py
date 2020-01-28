@@ -22,23 +22,26 @@ db = SQLAlchemy(app)
 
 
 class Predict(Resource):
-
     Clf = joblib.load("src/scripts/models/DigitClassifier.joblib")
 
     def post(self):
-
         def save(base, label):
+            # Get label list
+            ls = [l for l in os.listdir("src/data") if l[0] == label]
             # Initialize save counter
-            if len(os.listdir("src/data")):
-                ls = sorted(os.listdir("src/data"),
-                            key=lambda l: int(l.split(".")[0]))
-                idx = int(ls[-1].split(".")[0]) + 1
+            if ls:
+                sls = sorted(ls, key=lambda l: int(l[2]))
+                idx = int(sls[-1][2]) + 1
+                # Check for missing index
+                for i, l in enumerate(sls, 0):
+                    if int(l[2]) != i:
+                        idx = i
+                        break
             else:
-                idx = 1
+                idx = 0
             # Save to database
-            imageio.imwrite(f"src/data/{idx}.jpg", base)
-            db.session.add(Digit(digit_id=idx, pred=label))
-            return 1
+            imageio.imwrite(f"src/data/{label}({idx}).jpg", base)
+            db.session.add(Digit(digit_id=f"{label}({idx}).jpg", pred=label))
 
         def pred(img):
             # Get base
@@ -62,13 +65,19 @@ class Predict(Resource):
 
 
 class Digit(db.Model):
-
-    digit_id = db.Column(db.String(20), primary_key=True, unique=True, nullable=False)
+    digit_id = db.Column(db.String(10), primary_key=True, unique=True, nullable=False)
     pred = db.Column(db.String(1), nullable=False)
-    true = db.Column(db.String(1))
 
     def __str__(self):
-        return f"Digit('{self.digit_id}', '{self.pred}', '{self.true}')"
+        return f"Digit('{self.digit_id}', '{self.pred}')"
+
+    def clean_db():
+        db.drop_all()
+        db.create_all()
+        if os.listdir("src/data"):
+            for digit in os.listdir("src/data"):
+                db.session.add(Digit(digit_id=digit, pred=digit[0]))
+            db.session.commit()
 
 
 @app.route("/")
@@ -88,7 +97,6 @@ def docs():
 
 @app.route("/model/")
 def model():
-
     config = {
         "Vctr": {
             "input": ["base64"],
@@ -112,7 +120,10 @@ def data():
 
 @app.route("/model/data/<digit_id>")
 def digit(digit_id):
-    return send_from_directory("data/", f"{digit_id}.jpg", as_attachment=True)
+    return send_from_directory("data/", str(digit_id), as_attachment=True)
 
 
 api.add_resource(Predict, "/model/predict/")
+
+
+Digit.clean_db()

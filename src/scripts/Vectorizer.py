@@ -53,7 +53,7 @@ def Vctr(b64, centroid=True):
 
             # Append image data
             ret.append({
-                "base": base,
+                "base": base.astype(np.uint8),
                 "x": x,
                 "y": y,
                 "width": w,
