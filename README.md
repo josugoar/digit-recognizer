@@ -8,27 +8,38 @@ DISCLAIMER: Predictions are carried out by analyzing individual pixels, which mi
 
 Popup screen                                     |  Prediction result
 :-----------------------------------------------:|:-------------------------:
-![screenshot(1)](screenshots/screenshot(0).png)  |  ![screenshot(1)](screenshots/screenshot(1).png)
+![screenshot(0)](media/screenshot(0).png)  |  ![screenshot(1)](media/screenshot(1).png)
 
 
 ## Installation
 
-1. Install [python](https://www.python.org/downloads/) from official website
+1. Install [python](https://www.python.org/downloads/)
 2. Install package manager [pip](https://pip.pypa.io/en/stable/)
-3. Install and activate [virtualenv](https://virtualenv.pypa.io/en/latest/userguide/)
+3. Install [virtualenv](https://virtualenv.pypa.io/en/latest/userguide/)
 ```sh
 $ pip install virtualenv
+```
+4. Create environment
+```sh
 $ virtualenv ENV
+```
+5. Activate environment
+```sh
+(Posix)
 $ source /path/to/ENV/bin/activate
 ```
-4. Install [requirements.txt](requirements.txt) in root
 ```sh
-$ pip install requirements.txt
+(Windows)
+$ \path\to\ENV\Scripts\activate
+```
+6. Install [requirements.txt](requirements.txt)
+```sh
+$ /path/to/ENV/bin/pip install -r requirements.txt
 ```
 
 ## Usage
 
-1. Run [run.py](run.py) in root
+1. Run [run.py](run.py) **in root**
 ```sh
 $ python run.py
 ```
