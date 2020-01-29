@@ -13,7 +13,7 @@ Popup screen                                     |  Prediction result
 
 ## Installation
 
-1. Install [python](https://www.python.org/downloads/)
+1. Install [Python >= 3.6](https://www.python.org/downloads/)
 2. Install package manager [pip](https://pip.pypa.io/en/stable/)
 3. Install [virtualenv](https://virtualenv.pypa.io/en/latest/userguide/)
 ```sh
