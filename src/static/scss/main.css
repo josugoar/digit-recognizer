@@ -1,5 +1,4 @@
 .box-wrapper {
-  position: absolute;
   width: 100%;
   height: 100%;
 }
@@ -292,11 +291,10 @@ canvas {
 
 .mode-wrapper a:after {
   position: absolute;
+  width: 100%;
   height: 1px;
-  top: 0;
   left: 0;
   bottom: 0;
-  right: 0;
   margin: auto;
   color: transparent;
   background: #ffb20a;
@@ -539,11 +537,11 @@ button::-moz-focus-inner, .menu-item::-moz-focus-inner {
   z-index: -2;
 }
 
-.box-wrapper, canvas, strong {
+strong, .box-wrapper, canvas {
   z-index: -1;
 }
 
-.shift-wrapper, .display-wrapper {
+.display-wrapper, .mode-wrapper {
   z-index: 0;
 }
 
