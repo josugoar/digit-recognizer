@@ -8,7 +8,7 @@ DISCLAIMER: Predictions are carried out by analyzing individual pixels, which mi
 
 Popup screen                                     |  Prediction result
 :-----------------------------------------------:|:-------------------------:
-![screenshot(1)](screenshots/screenshot(1).png)  |  ![screenshot(1)](screenshots/screenshot(2).png)
+![screenshot(1)](screenshots/screenshot(0).png)  |  ![screenshot(1)](screenshots/screenshot(1).png)
 
 
 ## Installation
