@@ -8,8 +8,8 @@ HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-en
 
 ** Preprocessing does not scale with stroke width, which leads to poorer results as the image size increases.
 
-Popup screen                                     |  Prediction result
-:-----------------------------------------------:|:-------------------------:
+Popup screen                               |  Prediction result
+:-----------------------------------------:|:-------------------------:
 ![screenshot(0)](media/screenshot(0).png)  |  ![screenshot(1)](media/screenshot(1).png)
 
 
