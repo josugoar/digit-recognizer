@@ -6,7 +6,7 @@ HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-en
 
 \* Predictions are carried out by analyzing individual pixels, which might negatively impact accuracy. More advanced techniques (hog features, stroke sequence...) would result in improved performance.
 
-** Preprocessing does not scale with stoke width, which leads to poorer results as the image size increases.
+** Preprocessing does not scale with stroke width, which leads to poorer results as the image size increases.
 
 Popup screen                                     |  Prediction result
 :-----------------------------------------------:|:-------------------------:
