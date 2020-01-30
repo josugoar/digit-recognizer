@@ -2,11 +2,13 @@
 
 ![Author](https://img.shields.io/badge/author-JoshGoA-blue) ![License](https://img.shields.io/badge/license-GPL-green)
 
-HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-end UI on top of a Python (Flask, Flask-RESTful, Flask-Caching, Flask-FlatPages, Flask-SQLAlchemy) back-end API and database, implementing Python (numpy, sklearn, opencv) machine learning model building* and image recognition preprocessing** via asyncronous encoded requests. Integrated with Git source control.
+HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-end UI on top of a Python (Flask, Flask-RESTful, Flask-Caching, Flask-FlatPages, Flask-SQLAlchemy) back-end API and database*, implementing Python (numpy, sklearn, opencv) machine learning model building** and image recognition preprocessing*** via asyncronous encoded requests. Integrated with Git source control.
 
-\* Predictions are carried out by analyzing individual pixels, which might negatively impact accuracy. More advanced techniques (hog features, stroke sequence...) would result in improved performance.
+\* Database automatically clears itself up only when the application is booted, therefore it is not adviced to delete stored files whilist the processes are still running.
 
-** Preprocessing does not scale with stroke width, which leads to poorer results as the image size increases.
+** Predictions are carried out by analyzing individual pixels, which might negatively impact accuracy. More advanced techniques (hog features, stroke sequence...) would result in improved performance.
+
+*** Preprocessing does not scale image with stroke width, which leads to poorer results as the image size increases.
 
 Popup screen                             |Prediction result
 :---------------------------------------:|:---------------------------------------:
