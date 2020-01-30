@@ -44,7 +44,7 @@
   <!-- Bounding box -->
   <div class="box-wrapper"></div>
   <!-- Canvas sketch -->
-  <canvas id="sketch" onmousedown="$('.box-wrapper').html('')" onmousemove="draw(event)"></canvas>
+  <canvas id="sketch" onmousedown="$('.box-wrapper').html('');$('strong').fadeOut(250);" onmousemove="draw(event)"></canvas>
 
   <!-- Display buttons -->
   <div class="display-wrapper">
@@ -75,9 +75,9 @@
       <i class="fa fa-bars"></i>
     </a>
     <menu class="item-wrapper">
-      <a href="/model/data/" class="menu-item fa fa-database" title="Database"></a>
-      <a href="/model/" class="menu-item fa fa-gears" title="Configuration"></a>
-      <a href="/docs/" class="menu-item fa fa-info" title="Info"></a>
+      <a href="/model/data/" class="menu-item fa fa-database" title="Data"></a>
+      <a href="/model/" class="menu-item fa fa-gears" title="Configure"></a>
+      <a href="/info/" class="menu-item fa fa-info" title="Info"></a>
     </menu>
   </div>
 

@@ -15,9 +15,6 @@ function setPosition(event) {
 }
 // Draw line
 function draw(event) {
-  if ($("strong").is(":visible")) {
-    $("strong").fadeOut(250);
-  }
   if (event.buttons === 1) {
     if (mode === "brush") {
       ctx.lineWidth = 10;

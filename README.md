@@ -47,7 +47,7 @@ $ python run.py
 ```
 2. Open localhost port server link
 
-See [docs.html](src/static/pages/docs.html) for further details.
+See [info.html](src/static/pages/info.html) for further details.
 
 ## Contributors
 

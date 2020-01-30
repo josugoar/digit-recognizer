@@ -90,9 +90,9 @@ def index():
     )
 
 
-@app.route("/docs/")
-def docs():
-    return pages.get("docs").html
+@app.route("/info/")
+def info():
+    return pages.get("info").html
 
 
 @app.route("/model/")
