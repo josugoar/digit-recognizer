@@ -371,7 +371,6 @@ canvas {
 .popup-wrapper .popup i a {
   font-size: 10px;
   color: transparent;
-  background-clip: text;
   text-decoration: none;
 }
 

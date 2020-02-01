@@ -1,6 +1,6 @@
 {% if digits %}
     {% for digit in digits %}
-        <div style="display: inline-block; width: 50px; height: 50px; text-align: center;">
+        <div style="display: inline-block; width: 50px; height: 50px; text-align: center; cursor: pointer;" onclick="location.href=&quot;{{ url_for('digit', digit_id=digit.digit_id) }}&quot;">
             <img src="{{ url_for('digit', digit_id=digit.digit_id) }}" alt="{{ digit.pred }}" width="50px" height="50px" />
             {{ digit.pred }}
         </div>
