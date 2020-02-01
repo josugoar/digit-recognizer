@@ -16,7 +16,8 @@
     border: 4px double rgba(255,255,255,.25);
     border-width: 4px 0;
     background: url(/static/assets/triangles.png) repeat-y;
-    background-clip: text;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
     animation: showHidePopup 40s linear infinite;
 
     i {
