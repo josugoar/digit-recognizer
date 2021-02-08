@@ -53,4 +53,4 @@ See [info.html](src/static/pages/info.html) for further details.
 
 ## Contributors
 
-* **JoshGoA** - *Main contributor* - [GitHub](https://github.com/JoshGoA)
+* **josugoar** - *Main contributor* - [GitHub](https://github.com/josugoar)
