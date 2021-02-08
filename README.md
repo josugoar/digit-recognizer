@@ -12,7 +12,7 @@ HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-en
 
 Popup screen                             |Prediction result
 :---------------------------------------:|:---------------------------------------:
-![screenshot(0)](media/screenshot(0).png)|![screenshot(1)](media/screenshot(1).png)
+![popup_screen](assets/popup_screen.png)|![prediction_result](assets/prediction_result.png)
 
 
 ## Installation
