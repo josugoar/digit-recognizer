@@ -1,6 +1,14 @@
-# digit-recognizer
+<p align="center">
+  <img src="assets/digit-recognizer.png" alt="digit-recognizer" width="640" height="320">
+</p>
 
-![Author](https://img.shields.io/badge/author-josugoar-blue) ![License](https://img.shields.io/badge/license-GPL-green)
+<p align="center">
+  <img src="https://img.shields.io/badge/author-josugoar-blue" alt="author">
+  <img src="https://img.shields.io/badge/license-GPL-green" alt="license">
+</p>
+
+<h1></h1>
+
 
 HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-end UI on top of a Python (Flask, Flask-RESTful, Flask-Caching, Flask-FlatPages, Flask-SQLAlchemy) back-end API and database*, implementing Python (numpy, sklearn, opencv) machine learning model building** and image recognition preprocessing*** via asyncronous encoded requests. Integrated with Git source control.
 
@@ -12,7 +20,7 @@ HTML, CSS (SCSS/Sass) and JavaScript (jQuery) interactve and responsive front-en
 
 Popup screen                             |Prediction result
 :---------------------------------------:|:---------------------------------------:
-![popup_screen](assets/popup_screen.png)|![prediction_result](assets/prediction_result.png)
+![popup-screen](assets/popup-screen.png)|![prediction-result](assets/prediction-result.png)
 
 
 ## Installation
