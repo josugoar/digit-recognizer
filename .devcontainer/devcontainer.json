@@ -5,8 +5,6 @@
         "context": "..",
         "args": {
             "VARIANT": "3.8",
-            "INSTALL_NODE": "false",
-            "NODE_VERSION": "lts/*"
         }
     },
     "settings": {
