@@ -1,3 +1,5 @@
+# digit-recognizer
+
 <p align="center">
   <img src="assets/digit-recognizer.png" alt="digit-recognizer" width="640" height="320">
 </p>
