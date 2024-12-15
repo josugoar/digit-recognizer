@@ -60,7 +60,3 @@ $ python run.py
 2. Open localhost port server link
 
 See [info.html](src/static/pages/info.html) for further details.
-
-## Contributors
-
-* **josugoar** - *Main contributor* - [GitHub](https://github.com/josugoar)
